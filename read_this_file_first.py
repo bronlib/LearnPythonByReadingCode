@@ -1,5 +1,15 @@
 INTRODUCTION_WORDS="""
-Python is a very descriptive and powerful computer language with a rich set of libraries in wide set of domains.
+Python is a very descriptive and powerful computer language with a rich set of libraries covering wide set of domains.
+Becuase it is usable in so many different domains, it is language many people can profit from once they learned it. 
+It is the purpose of this course to getting someone started on that learning path...it also attempts lower the learning
+threshold: it assumes a knowledge of English, access to a Python interpreter (www.python.org), and the understanding
+of the existance of an "execution model" : (https://en.wikipedia.org/wiki/Execution_model): that there is this text, 
+on the one hand and a computer on the other and what that computer will do with this code. 
+
+This course will attempt to explain Python at different levels all at once: This file is the "top level" and is meant go
+give insight to Pythons' execution model.This file includes other files which in turn give insight into the different
+syntactical elements of Python. Those other files as imports in this file. 
+
 
 It is usually directly interpreted, compiled to "byte codes" and executed in a virtual machine. The virtual machine used
 can be other virtual machines such as Java (the compiler is called "Jython") or C# ( the compilier is called "IRONPYTHON")
@@ -15,47 +25,67 @@ exactly what the reader expects".
 I will attempt to illustrate this by introducing you to Python just by writing a "clean" Python program; giving
 variables, methods, and classes expressive names and minimizing comments. 
 
-I even began by assigning this text to the variable "introductionary_words" via the "=" operator, one the
+I even began this file by assigning this text to the variable "introductionary_words" via the "=" operator, one the
 first line of this file, which is called a "module" and note that a variable can only be created via an assignment
-and its type is the type of the object to which it is assigned.  In Python, everything is an object: they contain a set
+and its type is the type of the object which it is assigned to.  In Python, all "variables" are objects: they contain a set
 of methods and variables. 
 
+.... the following print statement will print these words .... And you will see them in the first lines if you 
+execute this module. 
+
+"""
+print(INTRODUCTION_WORDS)
+
+second_words="""
 For example, this module is an object with an important variable "__name__", which reflects if this module is called
 directly or indirectly via an "import". If it is called directly, the value of "__name__" will be "__main__", otherwise 
-it will contain the modules name, which is in this case "basic_python".
-
-As mentioned, Python's execution model is litterally very straight forward. It starts by parsing the main module, as a
-whole, and then executing the module by linearlly walking it through from the top to the bottom. When it reaches an 
-import and then loads that file, parses it and starts executing it, and after it reaches its end, continues after the 
-import. Essential to remember is that a module is loaded only once, so if an import statement is encountered which
-imports an already loaded module, that import statement will be skipped. 
+it will contain the modules' name, which is in this case "read_this_file_first".
 """
-import module_string_study
+print(second_words)
+print(__name__)   # this will be "__main__" if this file is executed
 
-# the following import will be skipped .... and by the way, all of the text in a line after a # token is also skipped,
-# as the hash token marks the  start of a comment.
-
-import module_string_study
+third_words="""
+As mentioned, Python's execution model is litterally very straight forward. It starts by parsing the first module it is 
+given, as a whole, and then executing the module by linearlly walking it through from the top to the bottom. 
+When it reaches an import and then loads that file, parses it and starts executing it, and after it reaches its end,
+continues after the import. Essential to remember is that each module is loaded only once, so each subsequent statement 
+that instructs to import that module again will be ignored.  
 
 """
-So, for example if you start execution in this module, after parsing, this whole file, the execution will start
+print(third_words)
+import module_string_study
+
+forth_words=""""
+the following import will be skipped 
+"""
+print(forth_words)
+import module_string_study
+"""
+.... and by the way, all of the text in a line after a '#'token is also skipped,
+as the hash token marks the  start of a comment. You can see that text after the '#' after the above 'print(__name__)' will
+not be seen in the execution of this module, along with these words, as they where not assigned to a variable
+and printed. 
+
+So, for example if you start by executing this module, after this file is parsed, the execution will start
 with the assignment of the string above to INTRODUCTION_WORDS.
 It will then: load and parse the module "module_string_study",
-in which it will execute the print statement you see in there and then exit the module and return to this module
-and ignore the comment and the following import statement, as that imports module_string_study again, and then sees this
-string, which is not assigned to a variable.
+in which it will execute the print statement you see in there, and all subsequent statements,  and then exit the module
+ and return to this module and print the "forth_words" etc... So in the execution of this module, the first and last 
+ prints in the module "module_string_study" will only be seen once. 
 
 It is also informative to execute this module in debug mode and single step through it one line at a time. 
 The debugger will bring you into the modules: module_string_study. If you wish, you can start the execution in any of 
 the modules that are included: in python, unlike many other languages, execution can start in any module: there is no 
 "main" module in Python, like there is in other languages like C++. Where the execution starts is up to the user, 
-and thus up to developer to guide the user to the correct module to start with in order to give the user the 
+and thus up to developer to inform the user which module to start with in order to give the user the 
 experience the developer wants the user to have.
 
 After processing this string, the interpreter will then executes the following: 
 assignments of an integer, then a float and then executes an addition of numbers
 and then of variables containing numbers. To explore more, then step into the module "module_arithmetic_study"
 """
+
+
 
 import module_arithmetic_study
 

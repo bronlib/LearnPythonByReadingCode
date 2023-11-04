@@ -1,7 +1,9 @@
 
 
 
-print("In another module")
+print("******** In module 'module_string_study' ***************** ")
+print(__name__) # this will print "module_string_study" if the execution started in "read_this_file_first".
+
 
 value = "While you're here, we can also learn a bit about strings"
 value += "The string assigned to value has just gotten larger with this string."
@@ -48,3 +50,6 @@ This is three single quotes
 a = "single string"
 b = a* 3
 print(b)
+
+
+print("******** End of module 'module_string_study' ***************** ")
