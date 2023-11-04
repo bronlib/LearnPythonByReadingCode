@@ -41,15 +41,12 @@ class Y(X, XYX):
     print("bbb")
 
 
+c = XYX(2, 3)
+a = XYX(1)
 
+b = X(1)
+b.second()
+b.third()
 
-if __name__ == "__main__":
-    # c = XYX(2, 3)
-    # a = XYX(1)
-
-    # b = X(1)
-    # b.second()
-    # b.third()
-
-    c = Y(1)
+c = Y(1)
 

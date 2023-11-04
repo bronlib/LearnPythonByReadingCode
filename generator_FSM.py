@@ -1,5 +1,7 @@
 
 
+print(f"\n\n******** Starting module {__file__} as {__name__} *************\n\n")
+
 def tst0():
 
     def sim(x):
@@ -99,6 +101,14 @@ def tst3():
     print("Finished ")
 
 
-if "__main__"  ==__name__:
+"""
+Python also has many powerful standard functions. 
+locals() returns a dictionary representing the current local symbol table.
+For methods, like tst0 above, it means that the name of the method is in 
+string form as a key. As a key it can now be executed by: locals()["tst0"]()
+To be clear, the part locals()["tst0"] is a pointer to the function and by adding the brackets (), it is called.
+"""
+for i in [0,1,2]:
+   locals()[f"tst{i}"]()
 
-    tst0()
+print(f"\n\n******** Ending module {__file__} as {__name__} *************\n\n")

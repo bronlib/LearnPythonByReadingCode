@@ -1,4 +1,6 @@
 
+print(f"\n\n******** starting module {__file__} as {__name__} *************\n\n")
+
 
 
 def say_hello(name):
@@ -26,33 +28,33 @@ def single_function():
 
 
 def second_function(a):
-    print("second function")
+    print(f"second function: {a}")
+    return a()
 
-#
-# second_function()
-# print("CALLING SINGLE FUNCTION:")
-# single_function()
-#
-# print("same as if ")
-# my_decorator(single_function())
-#
 
-@second_function
-def hi():
-    print("hi")
+second_function(print)
+print("CALLING SINGLE FUNCTION:")
+single_function()
 
-hi()
-# #
-# # def do_twice(func):
-# #     def wrapper_do_twice(*args, **kwargs):
-# #         func(*args, **kwargs)
-# #         func(*args, **kwargs)
-# #     return wrapper_do_twice
-# #
-#
-# @do_twice
-# def greet(name):
-#     print(f"Hello {name}")
-#
-#
-# greet("me")
+print("same as if ")
+my_decorator(single_function())
+
+
+
+def do_twice(func):
+    def wrapper_do_twice(*args, **kwargs):
+        func(*args, **kwargs)
+        func(*args, **kwargs)
+    return wrapper_do_twice
+
+
+@do_twice
+def greet(name):
+    print(f"Hello {name}")
+
+
+greet("me")
+
+
+
+print(f"\n\n******** Ending module {__file__} as {__name__} *************\n\n")

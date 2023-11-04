@@ -85,8 +85,6 @@ assignments of an integer, then a float and then executes an addition of numbers
 and then of variables containing numbers. To explore more, then step into the module "module_arithmetic_study"
 """
 
-
-
 import module_arithmetic_study
 
 
