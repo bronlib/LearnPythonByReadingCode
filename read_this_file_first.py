@@ -1,74 +1,130 @@
+"""
+Python Course: Learn Python By Reading Code
+"""
+
 INTRODUCTION_WORDS="""
 Python is a very descriptive and powerful computer language with a rich set of libraries covering wide set of domains.
 Becuase it is usable in so many different domains, it is language many people can profit from once they learned it. 
-It is the purpose of this course to getting someone started on that learning path...it also attempts lower the learning
+It is the purpose of this course to get someone started on that learning path...it also attempts to lower the learning
 threshold: it assumes a knowledge of English, access to a Python interpreter (www.python.org), and the understanding
-of the existance of an "execution model" : (https://en.wikipedia.org/wiki/Execution_model): that there is this text, 
-on the one hand and a computer on the other and what that computer will do with this code. 
+of the existance of an "execution model" : (https://en.wikipedia.org/wiki/Execution_model): 
 
-This course will attempt to explain Python at different levels all at once: This file is the "top level" and is meant go
-give insight to Pythons' execution model.This file includes other files which in turn give insight into the different
-syntactical elements of Python. Those other files as imports in this file. 
+   'In computing, a programming language consists of a syntax plus an execution model. 
+   The execution model specifies the behavior of elements of the language. 
+   By applying the execution model, one can derive the behavior of a program 
+   that was written in terms of that programming language. 
+   For example, when a programmer "reads" code, in their mind, 
+   they walk through what each line of code does. 
+   In effect they simulate the behavior inside their mind.
+   What the programmer is doing is applying the execution model to the code, 
+   which results in the behavior of the code. '
+ 
+So this course will describe the behavior of the elements of the language. First elements are identified and then their
+behavior will be described. 
 
+The first element to notice is this file. Because it contains Python code, this file is referred to as a 'module'. In the execution
+model, this module is first "parsed": the file is read-in and checked for correctness. If it is correct, this file will
+then be translated into "byte codes" and executed in a virtual machine. This process is very straight forward and linear,
+making it easy to "read the code" and create an expectation about its behavior.
 
-It is usually directly interpreted, compiled to "byte codes" and executed in a virtual machine. The virtual machine used
-can be other virtual machines such as Java (the compiler is called "Jython") or C# ( the compilier is called "IRONPYTHON")
-but is per default "CPython". 
+The next element to notice is a "variable". You already encountered one in the beginning of this file, and the identifier
+of that variable is "INTRODUCTION_WORDS". It is a variable because it is directly followed by, perhaps the most essential element
+in the Python language: the token '=' : the "assignment operator". The assignement operator assigns the variable to what is to the 
+right of the '=' token. The assignment determines the variables "type" and "value". In this case the variable, whose 
+identifier is "INTRODUCTION_WORDS", will be given the type "String" and whose value is all of the tokens from the start : 
+the three consecutive '"' tokens to the next occurance of three consecutive '"'  tokens and ends with a newline. 
 
-The execution model is very straight forward making it easy to simply "read the code" and create an expectation about 
-what the result will be during execution.  Coupled with the readability of Python's simple syntax, even a person who 
-is just beginning to read Python is able to formulate an expectation about what a program will do. 
+Taken together, namely the:
+     -Identifier
+     -the assignment operator
+     -the string following it, 
+     -a newline,
+is an example of a 'Python Statement'; a statement is something that the Python interpreter can execute. 
+The definition of a Python statement will be given later. For now it is important to understand that the resulting
+'behavior' of this statement is that the identifier 'INTRODUCTION_WORDS' can now be used to represent this
+string. 
 
-Of course it is up to the Python programmer to keep his code "clean" so it "will read like well written pros" and "does
-exactly what the reader expects".
+The line after the end of this string is also a Python Statement: which contains the function "print" whose 
+parameter is the variable 'INTRODUCTION_WORDS'. 
 
-I will attempt to illustrate this by introducing you to Python just by writing a "clean" Python program; giving
-variables, methods, and classes expressive names and minimizing comments. 
+A function is a block of statements which is executed when called. 
 
-I even began this file by assigning this text to the variable "introductionary_words" via the "=" operator, one the
-first line of this file, which is called a "module" and note that a variable can only be created via an assignment
-and its type is the type of the object which it is assigned to.  In Python, all "variables" are objects: they contain a set
-of methods and variables. 
+In this case, the resulting behavior of the function 'print' is printing out of this string. 
 
-.... the following print statement will print these words .... And you will see them in the first lines if you 
-execute this module. 
-
+Important here, is that if this module is executed, the first thing that will be seen is the printing of
+the variable 'INTRODUCTION_WORDS'.
 """
 print(INTRODUCTION_WORDS)
 
-second_words="""
-For example, this module is an object with an important variable "__name__", which reflects if this module is called
-directly or indirectly via an "import". If it is called directly, the value of "__name__" will be "__main__", otherwise 
-it will contain the modules' name, which is in this case "read_this_file_first".
+second_words="""You can now see that this module contains a second variable called "second_words", whose type is
+string and value are all of the tokens between the triple '"' tokens and ends in a newline.
+
+In Python, all "variables" are objects: they contain a set of funtions and objects. Functions belonging
+to an object are referred to as the objects 'methods'.
+
+As you can read in https://docs.python.org/3/reference/datamodel.html:
+
+    Objects are Python’s abstraction for data. All data in a Python program is represented 
+    by objects or by relations between objects. 
+    (In a sense, and in conformance to Von Neumann’s model of a “stored program computer”, 
+    code is also represented by objects.)
+
+    Every object has an identity, a type and a value. 
+    An object’s identity never changes once it has been created; 
+    you may think of it as the object’s address in memory. 
+    
+The '=' operator assigns an object to an identity and the print() function prints out the contents
+of that object given the objects identity. 
+
+Another example of an object is this module. This object contains the identifier  "__name__", whose type is string and 
+whose value is dependent on how the module was executed. If it was the first module to be executed, the value
+will be "__main__", otherwise it will be the files' file name. The file name of this module is "read_this_file_first.py".
+Another identifier of this module is __doc__. This value is also String and its value is:  
+
+      Python Course: Learn Python By Reading Code
+
+The idenfier "__doc__" of a module will contain a value of the type string if the module starts with a string.
 """
 print(second_words)
-print(__name__)   # this will be "__main__" if this file is executed
+print(__name__)
+print("start doc string", __doc__, "end doc string", "each of these strings will be separated by a space")
 
 third_words="""
+The result of the previous print statement is the printing of the text "__main__", and the next line
+will be the string at the start of this module. Because that string starts and ends with a newline, that is also 
+seen in the newlines of the print statement of the doc string. 
+
 As mentioned, Python's execution model is litterally very straight forward. It starts by parsing the first module it is 
-given, as a whole, and then executing the module by linearlly walking it through from the top to the bottom. 
-When it reaches an import and then loads that file, parses it and starts executing it, and after it reaches its end,
-continues after the import. Essential to remember is that each module is loaded only once, so each subsequent statement 
-that instructs to import that module again will be ignored.  
+given, as a whole, and then executing the module statement by statement to the last statement.  
+When the execution reaches an import statement, it then searches for that file, reads it in, parses it and executes it.
+Once that execution is completed it goes to the next statement of that import statement. 
+ 
+Essential to remember is that each module is loaded and executed only once, so each subsequent import statement 
+of that same module will be ignored. 
 
 """
 print(third_words)
-import module_string_study
+import operators_and_statements
+forth_words="""
+the following import will be skipped.
+You will see that in the print out, you will see that "Start..." and "End..." are only printed once. 
+"""
+print(forth_words) #This is a comment. All tokens after the hash token yp to and including the newline are skipped during excution.
+import operators_and_statements
 
-forth_words=""""
-the following import will be skipped 
 """
-print(forth_words)
-import module_string_study
-"""
-.... and by the way, all of the text in a line after a '#'token is also skipped,
-as the hash token marks the  start of a comment. You can see that text after the '#' after the above 'print(__name__)' will
-not be seen in the execution of this module, along with these words, as they where not assigned to a variable
-and printed. 
+So the second 'import operators_and_statements' is skipped. 
+
+.... and by the way, all of the text in a line after a '#'token are also skipped,
+as the hash token marks the  start of a comment. You can see that text after the '#' after the above 'print(forth_words) ' will
+not be seen in the execution of this module. 
+
+Also this string is also a comment as it was not assigned to a variable. 
+
 
 So, for example if you start by executing this module, after this file is parsed, the execution will start
 with the assignment of the string above to INTRODUCTION_WORDS.
-It will then: load and parse the module "module_string_study",
+It will then: load and parse the module "operators_and_statements",
 in which it will execute the print statement you see in there, and all subsequent statements,  and then exit the module
  and return to this module and print the "forth_words" etc... So in the execution of this module, the first and last 
  prints in the module "module_string_study" will only be seen once. 
@@ -85,8 +141,8 @@ assignments of an integer, then a float and then executes an addition of numbers
 and then of variables containing numbers. To explore more, then step into the module "module_arithmetic_study"
 """
 
-import module_arithmetic_study
 
+import module_arithmetic_study
 
 """
 Other important basic types are lists and dics
@@ -158,6 +214,7 @@ import no_circular_reference
 
 no_circular_reference.function_local()
 
+help(__name__)
 
 if __name__ == "__main__":
 

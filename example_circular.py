@@ -1,7 +1,7 @@
 
 
 print(".. now starting in another module, but the following will be ignored ")
-import module_string_study
+import string_study
 
 print(" now going for a circular import by importing basic_python ")
 import read_this_file_first
