@@ -1,6 +1,5 @@
 
-
-print(f"\n\n******** starting module {__file__} as {__name__} *************\n\n")
+print("******** Start of module ", __name__, "********")
 def justone(aa):
 
     print("staring aa")
@@ -34,6 +33,4 @@ gen = justone(2)
 for i in gen:
     print(i)
 
-
-
-print(f"\n\n******** Ending module {__file__} as {__name__} *************\n\n")
+print("******** End  of module ", __name__, "********")

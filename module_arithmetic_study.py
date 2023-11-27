@@ -1,6 +1,7 @@
 """
 This module is a brief introduction to Python's arithmetic
 """
+print("\n******** Start of module ", __name__, "********\n")
 
 INTEGER_NUMBER = 3
 FLOAT_NUMBER = 0.3
@@ -38,3 +39,8 @@ integer division
 real division
 module
 """
+
+
+
+
+print("\n******** End   of module ", __name__, "********\n")

@@ -1,10 +1,10 @@
-
+print("******** Start of module ", __name__, "********")
 
 print(".. now starting in another module, but the following will be ignored ")
-import string_study
+import module_string_study
 
 print(" now going for a circular import by importing basic_python ")
-import read_this_file_first
+import read_and_run_this_file_first
 print(" but it is already loaded, so it will nog be loaded again. ")
 print(" but note that it is just partially loaded because execution is now here.")
 
@@ -16,7 +16,7 @@ basic_python
 """
 print(NEXT_TO_SAY)
 
-read_this_file_first.this_is_a_function_with_two_parmeters("string", 100)
+read_and_run_this_file_first.this_is_a_function_with_two_parmeters("string", 100)
 
 
 #the following commented out code will cause a crash if executed:
@@ -30,7 +30,7 @@ any classes or functions that have been executed or loaded into memory.
 """
 print(TO_REALIZE)
 
-a = read_this_file_first.SimpleClass()
+a = read_and_run_this_file_first.SimpleClass()
 print("\n")
 a.show_locals()
 print("now a new local will be externally added to the instantiated class ")
@@ -38,14 +38,14 @@ a.new_local = 4
 a.show_locals()
 print("\n")
 
-read_this_file_first.SimpleClass.new_class_variable = "WOW"
+read_and_run_this_file_first.SimpleClass.new_class_variable = "WOW"
 
-print(vars(read_this_file_first.SimpleClass))
+print(vars(read_and_run_this_file_first.SimpleClass))
 
 
-print(vars(read_this_file_first.this_is_a_function_with_two_parmeters))
-read_this_file_first.this_is_a_function_with_two_parmeters.its_first_static_variable = "My first"
-print(vars(read_this_file_first.this_is_a_function_with_two_parmeters))
+print(vars(read_and_run_this_file_first.this_is_a_function_with_two_parmeters))
+read_and_run_this_file_first.this_is_a_function_with_two_parmeters.its_first_static_variable = "My first"
+print(vars(read_and_run_this_file_first.this_is_a_function_with_two_parmeters))
 
 
 def function_here():
@@ -58,8 +58,7 @@ function_here()
 
 print("The internal variable of this module, __name__ is {}".format(__name__))
 
-print("\n\n*** End of another_module with extra new lines ****** \n\n")
-
+print("******** End  of module ", __name__, "********")
 
 if __name__ == "__main__":
 

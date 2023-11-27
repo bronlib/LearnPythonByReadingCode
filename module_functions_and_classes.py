@@ -1,7 +1,7 @@
 """
 This module describes the use of function and classes
 """
-
+print("******** Start of module ", __name__, "********")
 
 
 
@@ -65,4 +65,4 @@ sc2 = SimpleClass()
 sc2.show_locals()
 
 
-
+print("******** End  of module ", __name__, "********")

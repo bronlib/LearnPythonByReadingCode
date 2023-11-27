@@ -1,3 +1,4 @@
+print("******** Start of module ", __name__, "********")
 
 class CanBeCalled():
 
@@ -10,3 +11,6 @@ class CanBeCalled():
 
 def function_local():
     print("calling function in module {}".format(__name__))
+
+
+print("******** End  of module ", __name__, "********")

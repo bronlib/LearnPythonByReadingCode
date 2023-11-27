@@ -83,81 +83,72 @@ Another identifier of this module is __doc__. This value is also String and its 
 
       Python Course: Learn Python By Reading Code
 
-The idenfier "__doc__" of a module will contain a value of the type string if the module starts with a string.
+The idenfier "__doc__" of a module will contain a value, of the type string, if the first element in the file is a strng.
 """
 print(second_words)
 print(__name__)
-print("start doc string", __doc__, "end doc string", "each of these strings will be separated by a space")
+print("start doc string", __doc__, "end doc string", "each string, after the first one will be prepended by a space.")
 
 third_words="""
-The result of the previous print statement is the printing of the text "__main__", and the next line
-will be the string at the start of this module. Because that string starts and ends with a newline, that is also 
-seen in the newlines of the print statement of the doc string. 
+The result of the previous print statement is the printing of the text "__main__", and the next lines
+will be the result of the third print statement. 
 
-As mentioned, Python's execution model is litterally very straight forward. It starts by parsing the first module it is 
-given, as a whole, and then executing the module statement by statement to the last statement.  
-When the execution reaches an import statement, it then searches for that file, reads it in, parses it and executes it.
-Once that execution is completed it goes to the next statement of that import statement. 
- 
+Python modules can embed an unlimited number of other Python modules via the "import" statement. It supports 
+unlimited nesting, but cyclic imports (importing a file that was imported at a higher level) is forbidden and
+results in an error.  Thanks to Pythons linear execution model, it is easy to predict the behavior of an 
+import statement. When the execution reaches an import statement, it then searches for that file, reads it in, 
+parses it and then executes it. Once that import statement is completed the execution proceeds to the next statement.
+
+So the behavior of the following import statement will be that the file "operators_and_statements" will be searched, 
+then parsed and then executed. 
+
+...and in this course the imports are used to go into detail about the other elements of Python....
+"""
+print(third_words)
+import module_operators_and_statements
+forth_words="""
+
 Essential to remember is that each module is loaded and executed only once, so each subsequent import statement 
 of that same module will be ignored. 
 
-"""
-print(third_words)
-import operators_and_statements
-forth_words="""
-the following import will be skipped.
+So following import will be skipped.
 You will see that in the print out, you will see that "Start..." and "End..." are only printed once. 
 """
 print(forth_words) #This is a comment. All tokens after the hash token yp to and including the newline are skipped during excution.
-import operators_and_statements
-
+import module_operators_and_statements
+print("The module 'operators_and_statements' was skipped\n")
 """
-So the second 'import operators_and_statements' is skipped. 
-
 .... and by the way, all of the text in a line after a '#'token are also skipped,
 as the hash token marks the  start of a comment. You can see that text after the '#' after the above 'print(forth_words) ' will
 not be seen in the execution of this module. 
 
-Also this string is also a comment as it was not assigned to a variable. 
+Also this string will be skipped because it is not assigned to a variable or is a doc string.  
 
-
-So, for example if you start by executing this module, after this file is parsed, the execution will start
-with the assignment of the string above to INTRODUCTION_WORDS.
-It will then: load and parse the module "operators_and_statements",
-in which it will execute the print statement you see in there, and all subsequent statements,  and then exit the module
- and return to this module and print the "forth_words" etc... So in the execution of this module, the first and last 
- prints in the module "module_string_study" will only be seen once. 
-
-It is also informative to execute this module in debug mode and single step through it one line at a time. 
-The debugger will bring you into the modules: module_string_study. If you wish, you can start the execution in any of 
+It is informative to execute this module in debug mode and single step through it one line at a time. 
+The debugger will bring you into the modules: string_study. If you wish, you can start the execution in any of 
 the modules that are included: in python, unlike many other languages, execution can start in any module: there is no 
 "main" module in Python, like there is in other languages like C++. Where the execution starts is up to the user, 
 and thus up to developer to inform the user which module to start with in order to give the user the 
 experience the developer wants the user to have.
 
-After processing this string, the interpreter will then executes the following: 
-assignments of an integer, then a float and then executes an addition of numbers
-and then of variables containing numbers. To explore more, then step into the module "module_arithmetic_study"
 """
-
-
 import module_arithmetic_study
-
 """
 Other important basic types are lists and dics
 """
-import lists_and_dicts
+import module_lists_and_dicts
 
 INTRODUCTION_WORDS_PART2 = """...and execution proceeds.
 It will not execute but load definitions: function defintions and class definitions
 into memory, as source code
 """
 
-import functions_and_classes
+import module_functions_and_classes
 
 
-import yield_generators
+import module_yield_generators
+
+import module_decorators
 
 #execution will now load, parse and execute "another_module"  module for the first time
 
@@ -176,23 +167,40 @@ def this_is_a_function_with_two_parmeters(parameter0, second):
 
 
 class SimpleClass:
+    "This is a simple class with a simple doc string"
 
     static_int_with_class_scope = 4
 
     def __init__(self):
-        print("this function, or better called as method, will be executed when the class is created")
+        "This is called when the class is initialized"
+        print("this method will be executed when the class is created")
         self.dynamic_int_only_usable_after_class_is_created = 5
 
 
-    def only_method(self):
-        print("this method static if it does not access dynamic variables ")
-        print("it may access static variables {}".format(SimpleClass.static_int_with_class_scope))
+    def a_static_method(parm):
+        """This method will only access static variables and can therefore be called
+        without intializing the class
+        """
+        print("It may access static variables: {}".format(SimpleClass.static_int_with_class_scope))
+        print(f"and its parmeter: {parm}")
+        return parm*SimpleClass.static_int_with_class_scope
 
     def show_locals(self):
+        "This method shows all of the local variables"
         print("locals in this object {}".format(vars(self)))
 
+print("Here is the result of the build-in help of simple class")
+help(SimpleClass)
 
-import example_circular
+print("Calling without initializing (see no printout):", SimpleClass.a_static_method(2))
+print("Calling directly, not in a print statement, shows the print out")
+result = SimpleClass.a_static_method(4)
+print(f"Here above the print-out and result ={result}")
+SimpleClass().show_locals()
+print("above you see the print out of the initialization process \n")
+
+
+import module_example_circular
 
 def cannot_be_executed_in_another_module():
     print("calling this function in another_module will cause a crash")
@@ -210,9 +218,9 @@ So normal practice: avoid circular references. If you include an import without
 a circular reference to this module, you can use all function and classes in it
 because you only depend on this imported module to be fully loaded. 
 """
-import no_circular_reference
+import module_no_circular_reference
 
-no_circular_reference.function_local()
+module_no_circular_reference.function_local()
 
 help(__name__)
 
@@ -220,7 +228,7 @@ if __name__ == "__main__":
 
     #this module is now considered fully loaded and now the circular referenced code can be executed
 
-    example_circular.function_here()
+    module_example_circular.function_here()
 
     print("If this module is the first to be executed, it becomes the 'main' module and its variable \
 __name__ will have the value __main__. Otherwise, this module was just included by another module. in which case \

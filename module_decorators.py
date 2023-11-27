@@ -1,6 +1,7 @@
-
-print(f"\n\n******** starting module {__file__} as {__name__} *************\n\n")
-
+""""
+Decorators
+"""
+print("\n******** Start of module ", __name__, "********\n")
 
 
 def say_hello(name):
@@ -56,5 +57,4 @@ def greet(name):
 greet("me")
 
 
-
-print(f"\n\n******** Ending module {__file__} as {__name__} *************\n\n")
+print("\n******** End of module ", __name__, "********\n")

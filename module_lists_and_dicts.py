@@ -1,4 +1,4 @@
-
+print("******** Start of module ", __name__, "********")
 
 c =["hello", 1]
 #c = "hello"
@@ -26,7 +26,7 @@ print("a is ",a)
 print("b is ",b)
 
 
-
+print("******** Start of module ", __name__, "********")
 
 
 
