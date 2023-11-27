@@ -103,6 +103,7 @@ So the behavior of the following import statement will be that the file "operato
 then parsed and then executed. 
 
 ...and in this course the imports are used to go into detail about the other elements of Python....
+....So please read and execute the imported modules in this module to learn different aspects of Python ...
 """
 print(third_words)
 import module_operators_and_statements
@@ -131,81 +132,21 @@ the modules that are included: in python, unlike many other languages, execution
 and thus up to developer to inform the user which module to start with in order to give the user the 
 experience the developer wants the user to have.
 
-"""
-import module_arithmetic_study
-"""
-Other important basic types are lists and dics
-"""
-import module_lists_and_dicts
 
-INTRODUCTION_WORDS_PART2 = """...and execution proceeds.
-It will not execute but load definitions: function defintions and class definitions
-into memory, as source code
 """
 
 import module_functions_and_classes
-
-
+import module_arithmetic_study
+import module_lists_and_dicts
 import module_yield_generators
-
 import module_decorators
-
-#execution will now load, parse and execute "another_module"  module for the first time
-
-print("\n\n*** going to another_module with extra new lines ****** \n\n")
-
-
-
-def this_is_a_function_with_two_parmeters(parameter0, second):
-    # indentation is essential: is shows scope
-    print("parameter0:{}, second:{}".format(parameter0, second))
-
-    local_variable = 2
-
-    print("This build in function shows the interal variables available in this function:\n{}".format(locals()))
-    print("end of function")
-
-
-class SimpleClass:
-    "This is a simple class with a simple doc string"
-
-    static_int_with_class_scope = 4
-
-    def __init__(self):
-        "This is called when the class is initialized"
-        print("this method will be executed when the class is created")
-        self.dynamic_int_only_usable_after_class_is_created = 5
-
-
-    def a_static_method(parm):
-        """This method will only access static variables and can therefore be called
-        without intializing the class
-        """
-        print("It may access static variables: {}".format(SimpleClass.static_int_with_class_scope))
-        print(f"and its parmeter: {parm}")
-        return parm*SimpleClass.static_int_with_class_scope
-
-    def show_locals(self):
-        "This method shows all of the local variables"
-        print("locals in this object {}".format(vars(self)))
-
-print("Here is the result of the build-in help of simple class")
-help(SimpleClass)
-
-print("Calling without initializing (see no printout):", SimpleClass.a_static_method(2))
-print("Calling directly, not in a print statement, shows the print out")
-result = SimpleClass.a_static_method(4)
-print(f"Here above the print-out and result ={result}")
-SimpleClass().show_locals()
-print("above you see the print out of the initialization process \n")
+import module_make_multiple_inits
 
 
 import module_example_circular
 
 def cannot_be_executed_in_another_module():
     print("calling this function in another_module will cause a crash")
-
-
 
 
 print("The internal variable of this module, __name__ is {}".format(__name__))
@@ -222,11 +163,28 @@ import module_no_circular_reference
 
 module_no_circular_reference.function_local()
 
+print("The following now shows all of the objects in this module, as it too is an object")
 help(__name__)
 
-if __name__ == "__main__":
+"""
+One thing you must notice when executing this course, is this module, and all of the imported modules,  
+contain print statements in the modules "body", so they are all executed during the loading process.
+When creating Python modules to use in project, this is one thing that must be avoided unless it serves
+some kind of essential informative service. In fact, in most Python programs, only classes and functions
+are defined in the modules bodies and are only executed when execution goes into the "if" statement here under. 
+But the ability to perform computations before the "if" statement here under is what makes Python unique
+compared to other languages like C++, Java, and C#. It gives the Python programmer to perform operations
+in Python that a C++ programmer has to do in macros and templates. 
+"""
 
-    #this module is now considered fully loaded and now the circular referenced code can be executed
+# this module is now considered fully loaded and now the circular referenced code can be executed
+if __name__ == "__main__":
+    """"
+    The code under this if will always be parsed but not executed if this module is imported.
+    It will only be executed if this module is the first one to be executed.
+    """
+
+
 
     module_example_circular.function_here()
 
