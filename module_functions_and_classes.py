@@ -73,7 +73,6 @@ print(SimpleClass.static_int_with_class_scope)
 SimpleClass.static_int_with_class_scope = 10
 print("mew value" , SimpleClass.static_int_with_class_scope)
 sc = SimpleClass()
-sc.static_method()
 sc.show_locals()
 print("\n And now we are going to dynamically expand the instance 'sc' of class 'SimpleClass' ")
 sc.added_method = this_is_a_function_with_two_parmeters

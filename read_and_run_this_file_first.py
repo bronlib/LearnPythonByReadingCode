@@ -1,5 +1,7 @@
 """
 Python Course: Learn Python By Reading Code
+information source: https://docs.python.org/3/index.html
+and most is from the part: https://docs.python.org/3/reference/index.html
 """
 
 INTRODUCTION_WORDS="""
@@ -99,14 +101,14 @@ results in an error.  Thanks to Pythons linear execution model, it is easy to pr
 import statement. When the execution reaches an import statement, it then searches for that file, reads it in, 
 parses it and then executes it. Once that import statement is completed the execution proceeds to the next statement.
 
-So the behavior of the following import statement will be that the file "operators_and_statements" will be searched, 
-then parsed and then executed. 
+So the behavior of the following import statement will be that the file "module_buld_in_types" 
+will be searched, then parsed and then executed. 
 
 ...and in this course the imports are used to go into detail about the other elements of Python....
 ....So please read and execute the imported modules in this module to learn different aspects of Python ...
 """
 print(third_words)
-import module_operators_and_statements
+import module_buld_in_types
 forth_words="""
 
 Essential to remember is that each module is loaded and executed only once, so each subsequent import statement 
@@ -116,7 +118,7 @@ So following import will be skipped.
 You will see that in the print out, you will see that "Start..." and "End..." are only printed once. 
 """
 print(forth_words) #This is a comment. All tokens after the hash token yp to and including the newline are skipped during excution.
-import module_operators_and_statements
+import module_buld_in_types
 print("The module 'operators_and_statements' was skipped\n")
 """
 .... and by the way, all of the text in a line after a '#'token are also skipped,
@@ -134,19 +136,24 @@ experience the developer wants the user to have.
 
 
 """
-
+import module_operators_and_statements
+import module_string_study
+import module_lists_and_dicts_sets
 import module_functions_and_classes
 import module_arithmetic_study
-import module_lists_and_dicts
 import module_yield_generators
 import module_decorators
 import module_make_multiple_inits
 
 
-import module_example_circular
+def this_is_a_function_with_two_parmeters(a, b):
+    print(f"This is a function with two parameters of any type {a}, {b}")
 
-def cannot_be_executed_in_another_module():
-    print("calling this function in another_module will cause a crash")
+#with imports you can also import objects so that they behave just as if they where defined in this module.
+#SimpleClass is called in the import module_example_circular
+from module_functions_and_classes import SimpleClass
+
+import module_example_circular
 
 
 print("The internal variable of this module, __name__ is {}".format(__name__))

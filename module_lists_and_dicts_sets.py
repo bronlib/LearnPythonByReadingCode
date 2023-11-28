@@ -1,5 +1,9 @@
 print("******** Start of module ", __name__, "********")
 
+"""
+A list in Python is litterly a list of objects. The objects may be of different 
+types. 
+"""
 c =["hello", 1]
 #c = "hello"
 
@@ -24,6 +28,8 @@ b[5] += "4"
 
 print("a is ",a)
 print("b is ",b)
+
+
 
 
 print("******** Start of module ", __name__, "********")
